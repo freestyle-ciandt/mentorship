@@ -5,7 +5,7 @@ Este repositório contêm uma série de tarefas desenhados para treinar as suas 
 ## Requisitos mínimos
 * [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
 * [NodeJS 14x](https://nodejs.org/en/)
-* Access to the CI&T Freestyle AWS account: [Console Link](https://ciandt.awsapps.com/start/#/)
+* Acesso à conta AWS da CI&T destinada à Coca Freestyle: [Console Link](https://ciandt.awsapps.com/start/#/)
 
 
 ## Projetos
