@@ -3,8 +3,9 @@
 Este repositório contêm uma série de tarefas desenhados para treinar as suas habilidades em AWS SAM e outras tecnologias back-end.
 
 ## Requisitos mínimos
-* AWS SAM CLI: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html
-* NodeJS versão 14x
+* [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
+* [NodeJS 14x](https://nodejs.org/en/)
+* Access to the CI&T Freestyle AWS account: [Console Link](https://ciandt.awsapps.com/start/#/)
 
 
 ## Projetos
