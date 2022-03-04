@@ -10,7 +10,7 @@ Este repositório contêm uma série de tarefas desenhados para treinar as suas 
 ## Projetos
 
 * **Loteria Online:** Esse projeto consiste em desenvolver um sistema simples de loteria online utilizando recursos da AWS. **Links das tarefas:**
-    * [Tarefa 1](./docs/loteria-online/tarefa1.md)
+    * [Tarefa 1](./projects/loteria-online/docs/tarefa1.md)
 
 ## References
 

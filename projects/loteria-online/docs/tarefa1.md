@@ -15,7 +15,7 @@ Aqui está uma representação visual de como a API final irá ficar:
 * Antes de começar, altere o valor `MENTORSHIP_STACK_NAME` no arquivo `.env`. Esse valor será usado como o nome da stack no CloudFormation.
 * Rode o comando `npm i` para instalar as dependências do projeto, neste caso o `loteria-online`.
 * Para fazer o deploy da sua stack, você poderá executar `npm run deploy`.
-* Você deverá criar testes unitários para suas funções utilizando o framework [Jest](https://jestjs.io/). O ideal é que todas elas tenham 100% de cobertura. Há um exemplo da estrutura padrão do Jest no diretório `src/example/`. (Caso se sentir confortável, configure o Jest para estrutura que você preferir.)
+* Você deverá criar testes unitários para suas funções utilizando o framework [Jest](https://jestjs.io/). O ideal é que todas elas tenham 100% de cobertura. Há um exemplo da estrutura padrão do Jest no diretório `src/example/`. (Caso se sentir confortável, configure o Jest para estrutura que você preferir.). Para rodar os testes, execute o comando `npm run deploy`.
 * Utilize a versão do **NodeJs 14x** para todas as Lambdas. Também utilize a arquitetura **arm64**.
 
 ## Descrição da Tarefa
