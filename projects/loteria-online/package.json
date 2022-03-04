@@ -1,0 +1,14 @@
+{
+  "name": "loteria-online",
+  "version": "1.0.0",
+  "scripts": {
+    "sam:build": "sam build --template template.yaml --build-dir .aws-sam/build",
+    "sam:package": "sam package --template-file .aws-sam/build/template.yaml --output-template-file .aws-sam/build/packaged-template.yaml --s3-bucket sam-ciandt-mentorship --s3-prefix $(grep MENTORSHIP_STACK_NAME .env | cut -d '=' -f2)",
+    "sam:deploy": "sam deploy --template-file .aws-sam/build/packaged-template.yaml --stack-name $(grep MENTORSHIP_STACK_NAME .env | cut -d '=' -f2) --no-fail-on-empty-changeset --s3-prefix $(grep MENTORSHIP_STACK_NAME .env | cut -d '=' -f2) --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM",
+    "deploy": "npm run sam:build && npm run sam:package && npm run sam:deploy",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}

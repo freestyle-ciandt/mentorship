@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: "AWS::Serverless-2016-10-31"
+
+Description: Template básico para resolver as tarefas
+
+Resources:
+  BucketExample:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${AWS::StackName}-example
+
+Outputs:
+  BucketExampleName:
+    Description: Nome do bucket de exemplo gerado
+    Value: !Ref BucketExample
