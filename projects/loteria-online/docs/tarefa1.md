@@ -2,7 +2,7 @@
 
 Essa tarefa tem o propósito de ensinar como criar uma API na AWS utilizando o SAM.
 
-Os principais recursos que( deverão ser utilizados:
+Os principais recursos que deverão ser utilizados:
 
 * API Gateway
 * Lambda
@@ -75,7 +75,7 @@ Aqui está uma representação visual de como a API final irá ficar:
     ```
     {
         "message": "Apostas encontradas com sucesso!",
-        "dados": [
+        "data": [
             { "id": "exemplo1", "email": "email1@gmail.com, "numeros": [1, 2, 3], "data": 123456789 },
             { "id": "exemplo2", "email": "email2@gmail.com, "numeros": [1, 2, 3], "data": 123456789 },
             { "id": "exemplo3", "email": "email3@gmail.com, "numeros": [1, 2, 3], "data": 123456789 },
@@ -100,7 +100,7 @@ Aqui está uma representação visual de como a API final irá ficar:
     ```
     {
         "message": "Apostas encontradas com sucesso!",
-        "dados": [
+        "data": [
             { "id": "exemplo1", "email": "email1@gmail.com, "numeros": [1, 2, 3], "data": 123456789 },
             { "id": "exemplo2", "email": "email1@gmail.com, "numeros": [1, 2, 3], "data": 123456789 },
         ],
