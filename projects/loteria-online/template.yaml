@@ -4,12 +4,60 @@ Transform: "AWS::Serverless-2016-10-31"
 Description: Template básico para resolver as tarefas
 
 Resources:
-  BucketExample:
-    Type: AWS::S3::Bucket
-    Properties:
-      BucketName: !Sub ${AWS::StackName}-example
+  TabelaApostas: 
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      TableName: !Sub ${AWS::StackName}_apostas
+      AttributeDefinitions: 
+        - AttributeName: "id"
+          AttributeType: "S"
+        - AttributeName: "email"
+          AttributeType: "S"
+      KeySchema: 
+        - AttributeName: "id"
+          KeyType: "HASH"
+      GlobalSecondaryIndexes: 
+        - 
+          IndexName: "email_index"
+          KeySchema: 
+            - AttributeName: "email" 
+              KeyType: "HASH"
+          Projection: 
+            ProjectionType: "ALL"
+      BillingMode: PAY_PER_REQUEST
 
-Outputs:
-  BucketExampleName:
-    Description: Nome do bucket de exemplo gerado
-    Value: !Ref BucketExample
+  LoteriaOnlineApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: prod
+      Auth:
+        ApiKeyRequired: true
+      Models:
+        Aposta:
+          type: object
+          required:
+            - email
+            - numeros
+          properties:
+            email:
+              type: string
+            numeros:
+              type: array
+
+  LoteriaOnlineFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: nodejs12.x
+      Events:
+        BitlyApi:
+          Type: Api
+          Properties:
+            RestApiId: !Ref LoteriaOnlineApi
+            Path: /aposta
+            Method: POST
+      CodeUri: ./src/loteria-online
+      Handler: index.handler
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref TabelaApostas
+
