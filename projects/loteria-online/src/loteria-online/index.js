@@ -1,5 +1,8 @@
 const { v4: uuidv4 } = require('uuid');
 
+const aws = require("aws-sdk");
+const dynamodb = new aws.DynamoDB
+
 const {
   TABLE_NAME,
 } = process.env;
@@ -24,6 +27,15 @@ exports.handler = async (event) => {
     return true
   }
 
+  const returnMessage = (code, message) => ({ 
+    statusCode: code,
+    body: JSON.stringify({
+    message,
+    }),
+  })
+
+  console.log(returnMessage(400,"Email inválido"))
+
   if (!validateEmail(event.email)){
     return {
       statusCode: 400,
@@ -42,17 +54,48 @@ exports.handler = async (event) => {
 
   }
 
-  const date = Date.now()
+  const date = Date.now().toString()
+  console.log('a data eh', date)
 
   const params = {
     TableName: TABLE_NAME,
     Item: {
-      id: uuidv4(),
-      email: event.email,
-      data: date,
+      "id": {
+        S: uuidv4()
+       }, 
+      "email": {
+        S: event.email
+       }, 
+      "data": {
+        N: date
+       },
+      "numeros": {
+        "L": [ {"N": "9"} , {"N": "8"}, {"N": "3"}]
+
+      }
     }
   };
+  try{
+    await dynamodb.putItem(params).promise();
+    console.log('foi p tabela!!!')
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+      message: `Aposta ${params.Item.id.S} registrada com sucesso. Boa sorte!`,
+      }),
+      };
 
-  console.log(params)
+  }catch(err){
+    console.log('nao foi p tabela')
+    return {
+      statusCode: 500,
+      body: JSON.stringify({
+      message: "Houve um erro ao tentar registrar a aposta.",
+      }),
+      };
+  }
+
+
+  console.log('params eh', params)
 
 }
