@@ -9,7 +9,7 @@ const {
 
 exports.handler = async (event) => {
 
-  const reg = new RegExp('[a-z0-9]+@[a-z]+[a-z]{2,3}' )
+  const reg = new RegExp('[a-z0-9]+\@[a-z]+[\.]{1}[a-z]{2,3}' )
 
   const validateEmail = (param) => {
     return reg.test(param);
@@ -34,24 +34,11 @@ exports.handler = async (event) => {
     }),
   })
 
-  console.log(returnMessage(400,"Email inválido"))
-
   if (!validateEmail(event.email)){
-    return {
-      statusCode: 400,
-      body: JSON.stringify({
-      message: "Email inválido",
-      }),
-      };
+    return returnMessage(400,"Email inválido");
   }
   if (!validadeNumber(event.numeros)){
-    return {
-      statusCode: 400,
-      body: JSON.stringify({
-      message: "Números inválidos",
-      }),
-      };
-
+    return returnMessage(400,"Números inválidos")
   }
 
   const date = Date.now().toString()
@@ -76,26 +63,14 @@ exports.handler = async (event) => {
     }
   };
   try{
+    console.log('uuid:', params.Item.id.S)
     await dynamodb.putItem(params).promise();
+    console.log(JSON.stringify(params))
     console.log('foi p tabela!!!')
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-      message: `Aposta ${params.Item.id.S} registrada com sucesso. Boa sorte!`,
-      }),
-      };
+    return returnMessage(200,`Aposta ${params.Item.id.S} registrada com sucesso. Boa sorte!`)
 
   }catch(err){
     console.log('nao foi p tabela')
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-      message: "Houve um erro ao tentar registrar a aposta.",
-      }),
-      };
+    return returnMessage(500,"Houve um erro ao tentar registrar a aposta.") 
   }
-
-
-  console.log('params eh', params)
-
 }

@@ -45,7 +45,7 @@ Resources:
             numeros:
               type: array
 
-  LoteriaOnlineFunction:
+  createApostasFunction:
     Type: AWS::Serverless::Function
     Properties:
       Runtime: nodejs12.x
@@ -57,7 +57,7 @@ Resources:
             Path: /aposta
             Method: POST
       CodeUri: ./src/loteria-online
-      Handler: index.handler
+      Handler: createApostas.handler
       Environment:
         Variables:
           TABLE_NAME: !Ref TabelaApostas
@@ -69,3 +69,64 @@ Resources:
               - 'dynamodb:BatchWriteItem'
             Resource:
               - !GetAtt TabelaApostas.Arn
+
+  getApostasFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: nodejs12.x
+      Events:
+        BitlyApi:
+          Type: Api
+          Properties:
+            RestApiId: !Ref LoteriaOnlineApi
+            Path: /apostas
+            Method: GET
+      CodeUri: ./src/loteria-online
+      Handler: getApostas.handler
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref TabelaApostas
+      Policies:
+        - Statement: 
+          - Effect: 'Allow'
+            Action:
+              - 'dynamodb:Query'
+            Resource:
+              - !Sub '${TabelaApostas.Arn}/index/email_index'
+
+  deleteApostasFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: nodejs12.x
+      Events:
+        BitlyApi:
+          Type: Api
+          Properties:
+            RestApiId: !Ref LoteriaOnlineApi
+            Path: /aposta/{id}
+            Method: DELETE
+      CodeUri: ./src/loteria-online
+      Handler: deleteApostas.handler
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref TabelaApostas
+      Policies:
+        - Statement: 
+          - Effect: 'Allow'
+            Action:
+              - 'dynamodb:DeleteItem'
+            Resource:
+              - !GetAtt TabelaApostas.Arn
+
+              # - !Sub '${TabelaApostas.Arn}/index/email_index'
+  TabelaSorteios: 
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      TableName: !Sub ${AWS::StackName}_sorteios
+      AttributeDefinitions: 
+        - AttributeName: "id"
+          AttributeType: "S"
+      KeySchema: 
+        - AttributeName: "id"
+          KeyType: "HASH"
+      BillingMode: PAY_PER_REQUEST
