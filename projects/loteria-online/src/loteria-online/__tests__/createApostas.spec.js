@@ -73,7 +73,7 @@ describe("Testes para a lambda Loteria Online", () => {
       TableName: process.env.TABLE_NAME
     });
   });
-  test("Deve retornar 200 quando o item é inserido na tabela", async () => {
+  test("Deve retornar 500 quando não for possivel registrar o item na tabela", async () => {
     const event = { email: "agatha@mail.br", numeros: [2, 3, 6] };
     uuidv4.mockReturnValue("1234agatha");
     mockPutItem.mockRejectedValue(new Error("Algo deu errado"))

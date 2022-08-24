@@ -42,7 +42,6 @@ exports.handler = async (event) => {
   }
 
   const date = Date.now().toString()
-  console.log('a data eh', date)
 
   const params = {
     TableName: TABLE_NAME,
@@ -63,14 +62,10 @@ exports.handler = async (event) => {
     }
   };
   try{
-    console.log('uuid:', params.Item.id.S)
     await dynamodb.putItem(params).promise();
-    console.log(JSON.stringify(params))
-    console.log('foi p tabela!!!')
     return returnMessage(200,`Aposta ${params.Item.id.S} registrada com sucesso. Boa sorte!`)
 
   }catch(err){
-    console.log('nao foi p tabela')
     return returnMessage(500,"Houve um erro ao tentar registrar a aposta.") 
   }
 }
