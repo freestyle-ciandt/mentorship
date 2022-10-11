@@ -1,4 +1,4 @@
-# Exercicio 1
+# E1 - Function Parameters
 
 * Crie uma função que faça a soma de todos os parâmetros. Sendo que:
     * O número de parâmetros a serem passados é indefinido. Ou seja, a pessoa poderá passar 1, 2 ou N parâmetros.
