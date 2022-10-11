@@ -1,4 +1,4 @@
-import myModule, { WELCOME_MESSAGE, sayHello } from '../index';
+import myModule, { WELCOME_MESSAGE, sayHello, MESSAGE_DISPLAY_TIMEOUT_MS, LOGIN_ATTEMPTS_LIMIT } from '../index';
 
 describe('E2 - Import/Export modules', () => {
   it('Should import constant successfully', () => {
@@ -13,6 +13,11 @@ describe('E2 - Import/Export modules', () => {
   it('Should import default function successfully', () => {
     expect(typeof myModule.sayGoodbye).toEqual('function');
     expect(myModule.sayGoodbye()).toEqual('Goodbye!');
+  });
+
+  it('Should import values exported from another file', () => {
+    expect(MESSAGE_DISPLAY_TIMEOUT_MS).toBe(2000);
+    expect(LOGIN_ATTEMPTS_LIMIT).toBe(3);
   });
 });
 

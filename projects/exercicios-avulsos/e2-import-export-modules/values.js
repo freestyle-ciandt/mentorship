@@ -1,0 +1,2 @@
+export const MESSAGE_DISPLAY_TIMEOUT_MS = 2000;
+export const LOGIN_ATTEMPTS_LIMIT = 3;
