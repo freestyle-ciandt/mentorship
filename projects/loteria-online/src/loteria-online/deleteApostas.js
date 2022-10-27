@@ -8,12 +8,13 @@ const docClient = new aws.DynamoDB.DocumentClient();
 exports.handler = async (event) => {
     const id = event.pathParameters.id
     if(!id){
-      return({ 
+      return({
         statusCode: 400,
-        body: JSON.stringify(
-         "Id inválido.") 
-       })
-    }
+        body: JSON.stringify({
+          message: "Id inválido",
+        }),
+      })
+    }        
     const params = {
         Key: {
          "id": id
@@ -22,17 +23,19 @@ exports.handler = async (event) => {
        };
     try{
       await docClient.delete(params).promise();
-      return({ 
+      return({
         statusCode: 200,
-        body: JSON.stringify(
-          `Aposta ${id} deletada com sucesso.`)
+        body: JSON.stringify({
+          message: `Aposta ${id} deletada com sucesso.`,
+        }),
       })
     }catch(err){
         console.log("erro: ", err.message)
-      return({ 
-       statusCode: 500,
-       body: JSON.stringify(
-        "Houve um erro ao tentar deletar a aposta.") 
+      return({
+        statusCode: 500,
+        body: JSON.stringify({
+          message: "Houve um erro ao tentar deletar a aposta.",
+        }),
       })
 
     }
