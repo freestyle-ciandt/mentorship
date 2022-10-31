@@ -4,6 +4,10 @@
   "description": "Esse projeto contêm uma serie de exercícios que podem ser feitos separadamente.",
   "type": "module",
   "scripts": {
+    "test:e1": "jest 'e1-*'",
+    "test:e2": "jest 'e2-*'",
+    "test:e3": "jest 'e3-*'",
+    "test:e4": "jest 'e4-*'",
     "test": "jest"
   },
   "devDependencies": {
