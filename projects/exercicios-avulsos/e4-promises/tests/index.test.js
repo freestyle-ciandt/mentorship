@@ -7,7 +7,7 @@ import { VALID_TOKEN } from '../constants';
 
 describe('E4 - Promises', () => {
   describe('executeInParallel', () => {
-    it('Should execute in parallel', async () => {
+    test('Should execute in parallel', async () => {
       const result = await executeInParallel();
       expect(result).toEqual({
         brand: { name: 'Ford', type: 'Car manufacturer' },
@@ -18,7 +18,7 @@ describe('E4 - Promises', () => {
   }, 5000);
 
   describe('validateToken', () => {
-    it('Should wait 2 seconds and return loggedIn as true if token is valid', async () => {
+    test('Should wait 2 seconds and return loggedIn as true if token is valid', async () => {
       const startTime = Date.now();
       const result = await validateToken(VALID_TOKEN);
       const executionTime = Date.now() - startTime;
@@ -28,7 +28,7 @@ describe('E4 - Promises', () => {
       expect(executionTime).toBeGreaterThanOrEqual(2000);
     });
 
-    it('Should throw an error if token is invalid', async () => {
+    test('Should throw an error if token is invalid', async () => {
       try {
         await validateToken('f8dd22e0-187f-4e3b-89b9-1e2f0777b14b');
       } catch (err) {

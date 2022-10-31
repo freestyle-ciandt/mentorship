@@ -9,6 +9,7 @@
     "test:e3": "jest 'e3-*'",
     "test:e4": "jest 'e4-*'",
     "test:e5": "jest 'e5-*'",
+    "test:e6": "jest 'e6-*'",
     "test": "jest"
   },
   "devDependencies": {

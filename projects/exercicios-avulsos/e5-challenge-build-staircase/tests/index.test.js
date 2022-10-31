@@ -3,7 +3,7 @@ import { buildStairs } from '../index';
 describe('E5 - Challenge - Build staircase', () => {
   const printResult = (result) => console.log(`Result:\n${result}`);
 
-  it('Should throw an error when number of steps are less than 2', () => {
+  test('Should throw an error when number of steps are less than 2', () => {
     try {
       buildStairs(1);
     } catch (err) {
@@ -13,7 +13,7 @@ describe('E5 - Challenge - Build staircase', () => {
     throw new Error('Expected to fail, but this test was executed successfully.');
   });
 
-  it('Should generate stairs correctly with 3 steps', () => {
+  test('Should generate stairs correctly with 3 steps', () => {
     const result = buildStairs(3);
     printResult(result);
 
@@ -24,7 +24,7 @@ describe('E5 - Challenge - Build staircase', () => {
     );
   });
 
-  it('Should generate stairs correctly with 5 steps', () => {
+  test('Should generate stairs correctly with 5 steps', () => {
     const result = buildStairs(5);
     printResult(result);
 
@@ -37,7 +37,7 @@ describe('E5 - Challenge - Build staircase', () => {
     );
   });
 
-  it('Should generate stairs correctly with 10 steps', () => {
+  test('Should generate stairs correctly with 10 steps', () => {
     const result = buildStairs(10);
     
     printResult(result);
