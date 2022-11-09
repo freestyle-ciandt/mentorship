@@ -9,6 +9,3 @@
     * Não deverá ser utilizado acesso direto aos atributos dos objetos, como por exemplo `userData.name`.
     * Caso o atributo `profession` não for especificado, ele deverá receber o valor `unknown`. (Não será permitido criar uma nova variável para fazer essa verificação, por exemplo `const userProfession = profession || 'unknown'`)
     * Caso o atributo `address.country` não for especificado, ele deverá receber o valor `Brazil`. (Não será permitido criar uma nova variável para fazer essa verificação, por exemplo `const userCountry = address && address.country || 'Brazil'`)
-
-
-

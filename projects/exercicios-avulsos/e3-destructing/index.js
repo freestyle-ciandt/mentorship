@@ -1,6 +1,7 @@
 
 export const getWinnersMessage = (listOfParticipants) => {
-  // YOUR CODE HERE...
+  const meuArray = {listOfParticipants}
+  console.log('meu array: ', meuArray)
   let message = '';
   message += `The first person to complete the test was ${firstWinner}.\n`;
   message += `Right after, ${secondWinner} completed the test.\n`;
