@@ -5,7 +5,7 @@ import {
 
 describe('E3 - Destructing', () => {
   describe('getWinnersMessage', () => {
-    it('Should generate winners message correctly', () => {
+    test('Should generate winners message correctly', () => {
       const result = getWinnersMessage(['Julia', 'Fabio', 'Tadeu', 'Jaqueline', 'Sabrina', 'Yuri']);
       expect(result).toEqual('The first person to complete the test was Julia.\n' + 
       'Right after, Fabio completed the test.\n' +
@@ -15,7 +15,7 @@ describe('E3 - Destructing', () => {
   });
 
   describe('getUserReport', () => {
-    it('Should generate user report correctly', () => {
+    test('Should generate user report correctly', () => {
       const report1 = getUserReport({
         name: 'Lucas',
         age: 32,
