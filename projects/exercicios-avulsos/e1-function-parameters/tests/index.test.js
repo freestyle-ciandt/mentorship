@@ -1,12 +1,7 @@
 import { execute } from '../index';
 
-<<<<<<< HEAD
-describe.only('E1 - Function parameters', () => {
-  it('Should return default value 1 when no parameters were specified', () => {
-=======
 describe('E1 - Function parameters', () => {
   test('Should return default value 1 when no parameters were specified', () => {
->>>>>>> cd59d78852ebe015fb09dfb84f99b8d7819ad2c0
     const result = execute();
     expect(result).toBe(1);
   });

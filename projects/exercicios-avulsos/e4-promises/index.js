@@ -8,9 +8,7 @@ import { VALID_TOKEN } from './constants';
 
 export const executeInParallel = async () => {
   // REPLACE THE LOGIC BELOW...
-  const brandData = await getBrandData();
-  const modelData = await getModelData();
-  const priceData = await getPriceData();
+  const [brandData, modelData, priceData] = await Promise.all([getBrandData(), getModelData(), getPriceData()])
 
   return { brand: brandData, model: modelData, price: priceData };
 };

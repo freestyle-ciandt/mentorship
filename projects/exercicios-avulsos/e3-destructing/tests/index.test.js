@@ -17,7 +17,7 @@ describe('E3 - Destructing', () => {
   describe('getUserReport', () => {
     test('Should generate user report correctly', () => {
       const report1 = getUserReport({
-        name: 'Lucas',
+        nome: 'Lucas',
         age: 32,
         address: {
           street: 'Caminho das Rosas',
@@ -27,7 +27,7 @@ describe('E3 - Destructing', () => {
       });
 
       const report2 = getUserReport({
-        name: 'Pedro',
+        nome: 'Pedro',
         age: 28,
         address: {
           street: 'Antonio de Albuquerque',
